@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "thedude"
+version = "0.1.0"
+description = ""
+authors = ["Vahid Al <thevahidal@gmail.com>"]
+packages = [
+    { include = "*", from = "src"}
+]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/thevahidal/thedude"
+repository = "https://github.com/thevahidal/thedude"
+
+[tool.poetry.scripts]
+thedude = "thedude.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.dev-dependencies]
+pytest = "8.0.2"
+pytest-cov = "4.1.0"
+black = "24.2.0"
+mypy = "1.8.0"
+bandit = "1.7.7"
+docformatter = "1.7.5"
+ruff = "0.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+backend-path = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+testpaths = "tests"
+
+[tool.black]
+line_length = 90
+target_version = ['py310']
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "venv",
+]
+ignore = []
+line-length = 90
+select = [
+    "E",
+    "F",
+    "W",
+    "I001",
+]
+src = ["src", "tests"]
+
+[mypy]
+files = ["src"]
+strict_optional = false
